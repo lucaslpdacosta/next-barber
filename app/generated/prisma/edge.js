@@ -173,7 +173,7 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": "../../../.env",
+    "rootEnvPath": null,
     "schemaEnvPath": "../../../.env"
   },
   "relativePath": "../../../prisma",
@@ -187,7 +187,7 @@ const config = {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://neondb_owner:npg_8aUdTnNhA1Bm@ep-crimson-band-a4sn18k9-pooler.us-east-1.aws.neon.tech/neondb"
+        "value": "postgresql://neondb_owner:npg_8aUdTnNhA1Bm@ep-crimson-band-a4sn18k9-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require"
       }
     }
   },
