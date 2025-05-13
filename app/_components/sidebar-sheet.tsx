@@ -6,23 +6,14 @@ import { Button } from "./ui/button"
 import { SheetClose, SheetContent, SheetHeader, SheetTitle } from "./ui/sheet"
 import { CalendarIcon, HomeIcon, LogOutIcon, LogInIcon } from "lucide-react"
 import { quickSearchOptions } from "../_constants/search"
-import {
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "./ui/dialog"
+import { DialogContent, DialogTrigger } from "./ui/dialog"
 import { Dialog } from "./ui/dialog"
-import { signIn, useSession, signOut } from "next-auth/react"
+import { useSession, signOut } from "next-auth/react"
 import { Avatar, AvatarImage } from "@radix-ui/react-avatar"
+import SignInDialog from "./sign-in-dialog"
 
 const SidebarSheet = () => {
   const { data } = useSession()
-
-  const handleLoginWithGoogleClick = () => {
-    signIn("google")
-  }
 
   const handleLogoutClick = () => {
     signOut()
@@ -59,26 +50,7 @@ const SidebarSheet = () => {
                 </Button>
               </DialogTrigger>
               <DialogContent className="w-[90%]">
-                <DialogHeader>
-                  <DialogTitle>Faça login na plataforma</DialogTitle>
-                  <DialogDescription>
-                    Conecte-se usando sua conta Google.
-                  </DialogDescription>
-                </DialogHeader>
-
-                <Button
-                  variant="outline"
-                  className="gap-1 font-bold"
-                  onClick={handleLoginWithGoogleClick}
-                >
-                  <Image
-                    src="/google.svg"
-                    alt="Fazer login com Google"
-                    width={18}
-                    height={18}
-                  />
-                  Google
-                </Button>
+                <SignInDialog />
               </DialogContent>
             </Dialog>
           </>
@@ -119,16 +91,18 @@ const SidebarSheet = () => {
         ))}
       </div>
 
-      <div className="flex flex-col gap-1 py-5">
-        <Button
-          variant="ghost"
-          className="justify-start gap-2"
-          onClick={handleLogoutClick}
-        >
-          <LogOutIcon size={18} />
-          Sair da Conta
-        </Button>
-      </div>
+      {data?.user && (
+        <div className="flex flex-col gap-1 py-5">
+          <Button
+            variant="ghost"
+            className="justify-start gap-2"
+            onClick={handleLogoutClick}
+          >
+            <LogOutIcon size={18} />
+            Sair da Conta
+          </Button>
+        </div>
+      )}
     </SheetContent>
   )
 }
