@@ -22,13 +22,6 @@ import { getBookings } from "../_actions/get-bookings"
 import { Dialog, DialogContent } from "./ui/dialog"
 import SignInDialog from "./sign-in-dialog"
 
-interface SessionUser {
-  id: string
-  name?: string | null
-  email?: string | null
-  image?: string | null
-}
-
 interface ServiceItemProps {
   service: BarbershopService
   barbershop: Pick<Barbershop, "name">
@@ -132,7 +125,6 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
       })
       await createBooking({
         serviceId: service.id,
-        userId: (data?.user as SessionUser).id,
         date: newDate,
       })
       handleBookingSheetOpenChange()
