@@ -1,4 +1,5 @@
 "use client"
+
 import { Prisma } from "@prisma/client"
 import { Avatar, AvatarImage } from "./ui/avatar"
 import { Badge } from "./ui/badge"
@@ -153,10 +154,12 @@ const BookingItem = ({ booking }: BookingItemProps) => {
             </SheetClose>
             {isConfirmed && (
               <Dialog>
-                <DialogTrigger className="w-full">
-                  <Button variant="destructive" className="w-full">
-                    Cancelar Reserva
-                  </Button>
+                <DialogTrigger asChild>
+                  <div className="w-full">
+                    <Button variant="destructive" className="w-full">
+                      Cancelar Reserva
+                    </Button>
+                  </div>
                 </DialogTrigger>
                 <DialogContent className="w-[90%]">
                   <DialogHeader>
@@ -172,14 +175,16 @@ const BookingItem = ({ booking }: BookingItemProps) => {
                         Voltar
                       </Button>
                     </DialogClose>
-                    <DialogClose className="w-full">
-                      <Button
-                        variant="destructive"
-                        onClick={handleCancelBooking}
-                        className="w-full"
-                      >
-                        Confirmar
-                      </Button>
+                    <DialogClose asChild>
+                      <div className="w-full">
+                        <Button
+                          variant="destructive"
+                          onClick={handleCancelBooking}
+                          className="w-full"
+                        >
+                          Confirmar
+                        </Button>
+                      </div>
                     </DialogClose>
                   </DialogFooter>
                 </DialogContent>
