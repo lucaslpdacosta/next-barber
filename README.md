@@ -1,4 +1,4 @@
-# FSW-Donalds  
+# FSW Barber 2.0
 
 Projeto realizado durante o evento Full Stack Week. Se consiste em um **sistema de agendamento para barbearias**, desenvolvido com um design **mobile-first** para melhor experiência em dispositivos móveis. O sistema permite criar agendamentos com direito a autenticação com Google provider. O status do agendamento (**confirmado, finalizado**) é gerenciado no banco de dados.
 
